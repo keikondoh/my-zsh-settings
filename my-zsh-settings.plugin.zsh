@@ -14,11 +14,15 @@ cd $(dirname $0)
 
 # 環境変数 ENABLEDAPP が設定していなければすべてのアプリが入っている前提になる
 if [ -z "$ENABLEDAPP" ]; then
-    ENABLEDAPP=("fzf" "exa" "ghq" "docker")
+    ENABLEDAPP=("fzf" "exa" "ghq" "docker" "git")
 fi
 
 if [ $(__is_enabled "docker") -eq 1 ]; then
     source setup-docker.zsh
+fi
+
+if [ $(__is_enabled "git") -eq 1 ]; then
+    source setup-git.zsh
 fi
 
 if [ $(__is_enabled "exa") -eq 1 ]; then
